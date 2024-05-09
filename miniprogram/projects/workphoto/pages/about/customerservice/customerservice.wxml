@@ -1,0 +1,10 @@
+<view class="cs">
+  <view class="top">
+    <view class="line"></view>
+    <view class="text">长按扫描二维码联系客服</view>
+    <view class="line"></view>
+  </view>
+  <view class="qrcode">
+    <image show-menu-by-longpress="{{true}}" src="cloud://achang-1ghps5r5e2739b74.6163-achang-1ghps5r5e2739b74-1314031900/workphoto/images/e1e2b1b8e87b695dd3779832f7fd083.jpg" mode="aspectFit"/>
+  </view>
+</view>

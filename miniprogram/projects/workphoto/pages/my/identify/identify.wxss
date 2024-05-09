@@ -1,0 +1,87 @@
+/* projects/workphoto/pages/my/chooseidentify/index.wxss */
+page{
+  height: 100%;
+  overflow: hidden;
+}
+.chooseidentify {
+  height: 100%;
+  width: 750rpx;
+  background: #f2f4f9;
+}
+/* 头顶 */
+.head .identify {
+  font-size: 60rpx;
+  font-weight: bold;
+  color: rgba(26, 26, 26, 1);
+}
+.head .discrib {
+  font-size: 28rpx;
+  font-weight: bold;
+  letter-spacing: 1rpx;
+  line-height: 60rpx;
+  color: rgba(88, 92, 229, 1);
+}
+
+/* 内容 */
+.body {
+  padding-top: 50rpx;
+}
+.body .item {
+  width: 716rpx;
+  height: 296rpx;
+  background-color: #fff;
+  border-radius: 16rpx;
+  box-shadow: 0rpx 4rpx 24rpx  rgba(0, 109, 204, 0.06);
+  margin: 25rpx auto;
+  display: flex;
+}
+.body .item.choose {
+  background-color: #585CE5;
+}
+.body .item image {
+  width: 200rpx;
+  height: 200rpx;
+  margin: 48rpx;
+}
+.body .item .context {
+  margin: 80rpx 20rpx;
+}
+.body .item .context .chinese {
+  font-size: 48rpx;
+  font-weight: bold;
+  letter-spacing: 0rpx;
+  line-height: 40px;
+  color: rgba(26, 26, 26, 1);
+}
+.body .item.choose .context .chinese {
+  color: rgba(255, 255, 255, 1);
+}
+.body .item .context .english {
+  font-size: 28rpx;
+  font-weight: bold;
+  letter-spacing: 0rpx;
+  color: rgba(150, 151, 153, 1);
+}
+
+.foot button {
+  width: 640rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  border-radius: 100rpx;
+  font-weight: 500;
+  color: #f2f4f9;
+  background-color: #585CE5;
+  box-shadow: 0px 14rpx 80rpx  rgba(0, 29, 176, 0.3);
+  position: fixed;
+  bottom: 100rpx;
+  left: 55rpx;
+}
+
+.foot button:active {
+  background-color: rgba(0, 29, 176, 0.3);
+}
+.foot button[disabled] {
+  color: #fff;
+  background: rgba(88, 92, 229, 0.6);
+}
+

@@ -1,0 +1,56 @@
+<view wx:if="{{isLoad===null}}" class="margin-top load notexist text-l load-project"></view>
+<view wx:if="{{isLoad===false}}" class="margin-top load loading text-l load-project"></view>
+
+<view wx:if="{{isLoad}}" class="main padding-project">
+
+	<view class="article-box">
+		<view class="form-box card-project shadow-project">
+			<view style="padding: 20rpx;">
+        <view style="display: flex; justify-content: space-between;align-items: center;">
+          <view class="title content-cut-two" style="display: flex;align-items: center;">
+            <image style="width: 60rpx;height: 60rpx;border-radius: 50%;margin-right: 20rpx;" src="{{meet.MEET_OBJ.avatar}}" mode=""/>
+            <text>{{meet.MEET_OBJ.name}}</text>
+          </view>
+          <view class="arrow"></view>
+        </view>
+				
+      </view>
+
+			<view style="padding: 20rpx;">
+        <view style="margin-bottom: 5rpx;display: flex;justify-content: space-between;">
+          <view style="display: flex;align-items: center;"> 
+            <image style="width: 30rpx;height: 30rpx;margin-right:10rpx;" src="../../../images/my_join_list/时间.png" mode=""/>
+            <view class="line1" style="font-size: 28rpx;color: #888">时间：{{meet.dayDesc}}</view>
+          </view>
+          <view bindtap="url" data-type="back" style="width: 160rpx;height: 40rpx;line-height: 40rpx; color:#585CE5;border:2rpx solid #585CE5;border-radius: 10rpx;font-size: 20rpx;text-align: center;">
+            更改日期
+          </view>
+        </view>
+        <view style="display: flex;align-items: center;">
+            <image style="width: 30rpx;height: 30rpx;margin-right:10rpx;" src="../../../images/my_join_list/地址.png" mode=""/>
+            <view class="line1" style="font-size: 28rpx;color: #888">地址：{{address}}</view>
+        </view>
+			</view>
+
+		</view>
+
+
+	</view>
+
+	<view class="article-box"> 
+
+		<!-- form content begin -->
+		<view  class="form-box card-project shadow-project margin-top">
+			<view class="form-group">
+        <view class="title">预约信息</view>
+				<view style="flex: 1;">请您填写资料，带<text class="text-red text-bold">*</text>号为必填项</view>
+			</view>
+			<cmpt-form-show isConfirm="{{true}}" id="form-show" mark="form-show-join" forms="{{meet.myForms}}" isCacheMatch="{{true}}" fields="{{meet.MEET_JOIN_FORMS}}" bind:submit="bindSubmitCmpt" />
+		</view>
+		<!-- form content END. -->
+
+	</view>
+ 
+	<button  bindtap="bindCheckTap" class="phone" style="margin-bottom:100rpx;">提交预约</button>
+
+</view>

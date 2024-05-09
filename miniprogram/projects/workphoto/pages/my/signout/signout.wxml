@@ -1,0 +1,24 @@
+<view class="information">
+  <view class="image">
+    <image src="../../../images/my/signout/提醒.png" mode=""/>
+  </view>
+  <view class="desc">注销账号后将无法登录，同时一下信息将被清空且无法找回</view>
+  <view class="intro">
+    <view class="item">
+      身份、账号信息
+    </view>
+    <view class="item">
+      预约、交易记录
+    </view>
+    <view class="item">
+      个人隐私记录
+    </view>
+    <view class="item"> 
+      其它权益信息
+    </view>
+  </view>
+
+  <view class="foot">
+    <button disabled="{{ choose===2 }}" bind:tap="signout">确认注销</button>
+  </view>
+</view>

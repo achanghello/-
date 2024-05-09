@@ -1,0 +1,12 @@
+<view class="form-ac">
+	<view class="form-ac-item">
+		<input placeholder="填写您的手机号码" placeholder-class="phc" model:value="{{formMobile}}" maxlength="11"></input>
+    <view class="seconds" bind:tap="startClock">{{ textText }}</view>
+	</view>
+  <view class="tip-text">{{phoneNumberTip}}</view>
+
+	<view class="form-ac-item">
+		<input placeholder="填写您的验证码" placeholder-class="phc" model:value="{{testCode}}" maxlength="6"></input>
+  </view>
+  <view class="tip-text">{{testCodeTip}}</view>
+</view>

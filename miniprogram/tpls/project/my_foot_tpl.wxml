@@ -1,0 +1,29 @@
+<!-- List Begin -->
+<view class="my-foot">
+	<view class="simple text-center text-grey padding" wx:if="{{!footList || footList.length==0}}">暂无记录哦~</view>
+
+  <view class="comm-list-box">
+    <block wx:for="{{footList}}" wx:key="key">
+      <view class="item" bindtap="url" data-url="{{item.path}}">
+        <image mode="aspectFill" lazy-load="{{true}}" class="left" src="{{item.avatar}}">
+        </image>
+        <view class="center">
+          <view style="font-size: 28rpx;color: rgba(26, 26, 26, 1);">{{item.name}}</view>
+          <view style="font-size: 20rpx;color: rgba(100, 101, 102, 1);">
+            {{item.area}} {{item.cntFav}}人收藏
+          </view>
+        </view>
+        <view class="right-collection">
+          <!-- <image wx:if="{{isFav==0}}" style="width: 50rpx;height: 50rpx;" src="../../../images/home/星星.png" mode=""/>
+          <image wx:else style="width: 50rpx;height: 50rpx;" src="../../../images/home/星星2.png" mode=""/> -->
+          <text class="icon-right"></text>
+        </view>
+      </view>
+      <view class="line"></view>
+    </block>
+	</view>
+
+
+
+</view>
+<!-- List END -->

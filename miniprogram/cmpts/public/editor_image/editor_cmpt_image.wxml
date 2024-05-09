@@ -1,0 +1,17 @@
+<view>
+		<view class="editor-node-wrapper">
+			<view class="editor-pictures">
+        <block wx:for="{{nodeList}}" wx:for-item="node" wx:key="index">
+          <view class="item pic">
+            <image bindtap="url" data-type="image" data-url="{{node.val}}"  id="editor-node-{{index}}" wx:if="{{node.type==='img'}}" mode="aspectFit" src="{{node.val + '?timestamp=' + timestamp}}" lazy-load="true"></image>
+            <view class="delete" bind:tap="delete" data-index="{{index}}">
+              <image style="width: 70%;height: 70%;" src="../../../projects/workphoto/images/my/regway/关闭.png" mode=""/>
+            </view>
+          </view>
+        </block>
+        <view wx:if="{{ nodeList.length<10 }}" class="item add" bind:tap="bindAddImageTap">
+          <image src="../../../projects/workphoto/images/my/edit/加号.png" mode=""/>
+        </view>
+      </view> 
+		</view>
+</view>

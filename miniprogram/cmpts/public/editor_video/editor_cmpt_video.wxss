@@ -1,0 +1,47 @@
+.editor-node-wrapper {
+  background-color: #fff;
+  margin-top: 25rpx;
+  padding-top: 25rpx;
+  padding-bottom: 25rpx;
+}
+
+.editor-node-wrapper .editor-video {
+  width: 700rpx;
+}
+
+.editor-node-wrapper .editor-video .item {
+  width: 700rpx;
+  height: 400rpx;
+  margin: 25rpx;
+  background-color: #fff;
+  border-radius: 14rpx;
+  overflow: hidden;
+
+  position: relative;
+}
+.editor-node-wrapper .editor-video .item.video .delete {
+  position: absolute;
+  background-color: #585CE5;
+  width: 50rpx;
+  height: 50rpx;
+  right: 10rpx;
+  top: 10rpx;
+  border-radius: 30rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.editor-node-wrapper .editor-video .item video {
+  width: 100%;
+  height: 100%;
+}
+.editor-node-wrapper .editor-video .add {
+  background: rgba(237, 239, 242, 1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.editor-node-wrapper .editor-video .add image {
+  width: 60rpx;
+  height: 60rpx;
+}

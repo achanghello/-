@@ -1,0 +1,24 @@
+<view class="logo-outer"> 
+  <image class="logo" src="../../../images/my/regway/logo.png" mode=""/>
+</view>
+
+<view class="list-menu ">
+    <view class="item" bindtap="url" data-url="../foot/my_foot">
+			<view class="title">
+				<text>当前版本</text>
+			</view>
+      <text>v1.0</text>
+		</view>
+    <view class="item" bindtap="url" data-url="../../about/index/about_index?key=SETUP_CONTENT_ABOUT">
+			<view class="title">
+				<text>用户协议</text>
+			</view>
+      <text class="icon-right"></text>
+		</view>
+		<view class="item" bindtap="url" data-url="../fav/my_fav">
+			<view class="title">
+				<text>隐私政策</text>
+			</view>
+      <text class="icon-right"></text>
+		</view>
+	</view>

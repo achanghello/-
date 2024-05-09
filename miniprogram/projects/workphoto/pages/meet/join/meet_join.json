@@ -1,0 +1,9 @@
+{
+	"usingComponents": {  
+		"cmpt-form-show": "/cmpts/public/form/form_show_sub/form_show_sub_cmpt"    
+	},
+	"enablePullDownRefresh": true, 
+  "navigationBarTitleText": "预约登记",
+  "navigationBarBackgroundColor": "#efefef",
+	"navigationBarTextStyle": "black"
+}

@@ -1,0 +1,34 @@
+<view wx:if="{{identify==='date'}}" id="formDaysSet" class="form-box shadow">
+	<view bindtap="url" data-url="../time/admin_meet_time" class="form-group arrow">
+		<view class="title must ">预约时段排期设置</view>
+		<view wx:if="{{formDaysSet.length}}" class="form-text text-red text-bold">{{formDaysSet.length}}天可约</view>
+		<view wx:else class="form-text text-orange">请配置可预约时段</view>
+	</view>
+	<view wx:if="{{formDaysSetFocus}}" class="hint-desc error">{{formDaysSetFocus}}</view> 
+
+  <view class="form-group" id="formCancelSet">
+		<view class="title must">取消设置</view>
+		<cmpt-picker mark="cancelSet" style="flex:1" model:item="{{formCancelSet}}" sourceDataStr="0=不可取消,1=随时可取消,2=仅开始前可取消" />
+	</view>
+	<view wx:if="{{formCancelSetFocus}}" class="hint-desc error">{{formCancelSetFocus}}</view>
+
+  <view class="form-group arrow" id="formArea" style="padding-right: 70rpx;">
+    <view class="title must">预约城市</view>
+    <picker class="picker-base" mode="region" bindchange="bindAreaChange">
+      <view wx:if="{{formArea && formArea.length==3}}" class="picker-select">
+        {{formArea}}
+      </view>
+      <view wx:else class="picker-select">
+        省,区,市
+      </view>
+    </picker>
+	</view>
+	<view wx:if="{{formAreaFocus}}" class="hint-desc error">{{formAreaFocus}}</view>
+</view>
+
+<view wx:else class="form-box shadow margin-top-xs">
+	<cmpt-form-show id="cmpt-form" fields="{{fields}}" forms="{{formForms}}">
+	</cmpt-form-show>
+</view>
+
+

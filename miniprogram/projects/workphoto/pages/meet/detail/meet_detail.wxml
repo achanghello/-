@@ -1,0 +1,271 @@
+<view wx:if="{{isLoad===false}}" class="margin-top load loading text-l load-project" style="margin-top:200rpx"></view>
+
+<block wx:if="{{isLoad}}">
+	<view class="main">
+		<view class="meet-title">
+			<view class="bg-img">
+        <image style="width: 100%;height: 100%;" src="{{meet.MEET_OBJ.backgroundimage}}" />
+      </view>
+      <view class="goBack" bind:tap="goHome">
+        主页   
+      </view>
+			<view class="info">
+				<view class="right" style="margin-right: 20rpx;">
+          <!-- class="loading" -->
+					<image mode="aspectFill" src="{{meet.MEET_OBJ.avatar}}" />
+				</view>
+        <view class="left">
+          <view wx:if="{{isSelf}}" bind:tap="openPopup" style="position: absolute;right: 30rpx;font-size: 40rpx;">...</view>
+					<view class="line1 text-cut">{{meet.MEET_OBJ.name}}
+            <!-- <image style="width: 30rpx;height: 30rpx;" src="../../../images/my/edit/编辑资料.png" mode=""/> -->
+          </view>
+					
+          <view class="tag-list  text-cut" style="display: flex;align-items: center;">
+            <wxs module="computed">
+              module.exports = {
+                computedAge:function(birthday,date){
+                  var d1 = birthday.slice(0,4)
+                  var d2 = parseInt(d1)
+                  var d3 = parseInt(date)
+
+                  return d3-d2>0?d3-d2:0
+                },
+                computedSex:function(sex){
+                  if(sex==='1'){
+                    return '../../../images/my/center/男性.png'
+                  }else if(sex==='2'){
+                    return '../../../images/my/center/女性.png'
+                  }else{
+                    return ''
+                  }
+                }
+              }
+            </wxs>
+            <image style="width: 30rpx;height: 30rpx;margin-right: 8rpx;" src="{{computed.computedSex(meet.MEET_OBJ.sex)}}" mode=""/>
+            
+            <text class="tag" style="background: none;padding: 0;">{{ computed.computedAge(meet.MEET_OBJ.birthday,date)}}岁</text> 
+						<text class="tag" style="background: none;padding: 0;">{{meet.MEET_CATE_NAME}}</text> 
+						<text class="tag" style="background: none;padding: 0;">{{meet.MEET_OBJ.area}}</text>
+					</view>
+          <view class="line2 text-cut">{{meet.MEET_OBJ.introduce[0]&&meet.MEET_OBJ.introduce[0].val}}</view>
+				</view>
+			</view>
+			<view class="stat">
+				<view class="left">
+          <view class="item">
+						<view>{{meet.cntFav}}</view>
+						<text>收藏</text>
+					</view>
+					<view class="item">
+						<view wx:if="{{meet.MEET_CATE_ID==1}}">{{meet.cntJoin}}</view>
+						<text wx:if="{{meet.MEET_CATE_ID==1}}">演出</text>
+            <view wx:if="{{meet.MEET_CATE_ID==2}}">{{meet.cntWork}}</view>
+						<text wx:if="{{meet.MEET_CATE_ID==2}}">合作</text>
+					</view>
+				</view>
+				<view class="right">
+					<cmpt-detail class="oprt" mode="btn" oid="{{id}}" cate="{{meet.MEET_CATE_NAME}}" title="{{meet.MEET_OBJ.name}}" cover="{{meet.MEET_OBJ.backgroundimage}}" qr="{{meet.MEET_QR}}" bg="{{skin.PROJECT_COLOR}}" doFav="{{isSelf}}" name="{{meet.MEET_OBJ.name}}" avatar="{{meet.MEET_OBJ.avatar}}" area="{{meet.MEET_OBJ.area}}" cntFav="{{meet.cntFav}}">
+					</cmpt-detail>
+				</view>
+			</view>
+		</view>
+
+    <view wx:if="{{isBlack}}" class="down">
+      <view style="margin: 50rpx auto;">
+        您已拉黑对方，无法查看对方的内容
+      </view>
+    </view>
+		<view wx:else class="down">
+			<view class="meet-tab">
+				<view wx:if="{{meet.MEET_CATE_ID==1}}" bindtap="bindTabTap" data-cur="time" class="item {{cur=='time'?'cur':''}}">时段</view>
+				<view bindtap="bindTabTap" data-cur="detail" class="item {{cur=='detail'?'cur':''}}">详情</view>
+				<view bindtap="bindTabTap" data-cur="photo" class="item {{cur=='photo'?'cur':''}}">照片</view>
+        <view bindtap="bindTabTap" data-cur="vedio" class="item {{cur=='vedio'?'cur':''}}">视频</view>
+			</view>
+
+			<view wx:if="{{cur=='detail'}}" class="article-box">
+				<view class="article">
+					<block>
+            <view style="display: flex;justify-content: space-between;align-items: center;">
+              <view wx:if="{{meet.MEET_CATE_ID==1}}" style="font-size: 32rpx;line-height: 70rpx;">
+                艺人简介
+              </view>
+              <view wx:else style="font-size: 32rpx;line-height: 70rpx;">
+                简介
+              </view>
+              <view wx:if="{{!isSelf}}" data-type="navigate" bindtap="url" data-url="{{'../../admin/meet/edit/admin_meet_edit?id=' + id}}" style="display: flex;justify-content: space-between;align-items: center;">
+                <image style="width: 30rpx;height: 30rpx;" src="../../../images/my/mypage/编辑资料-蓝.png" mode=""/>
+                <text style="font-size: 25rpx;line-height: 30rpx;color: #4059ff;">编辑</text>
+              </view>
+            </view>
+						<view style="font-size: 26rpx;color: rgba(100, 101, 102, 1);line-height: 44rpx;word-break: break-word;">
+                <block wx:for="{{meet.MEET_OBJ.introduce}}" wx:key="key">
+                  <view wx:if="{{item.type=='text'}}">
+                    {{item.val}}
+                  </view>
+                </block>
+            </view>
+            <view style="width: 100%;height: 30rpx;"></view>
+          </block>
+          <block wx:if="{{meet.MEET_CATE_ID==1}}">
+            <view style="display: flex;justify-content: space-between;align-items: center;">
+              <view style="font-size: 32rpx;line-height: 70rpx;">
+                演艺经历
+              </view>
+              <view wx:if="{{!isSelf}}" data-type="navigate" bindtap="url" data-url="{{'../../admin/meet/edit/admin_meet_edit?id=' + id}}" style="display: flex;justify-content: space-between;align-items: center;">
+                <image style="width: 30rpx;height: 30rpx;" src="../../../images/my/mypage/编辑资料-蓝.png" mode=""/>
+                <text style="font-size: 25rpx;line-height: 30rpx;color: #4059ff;">编辑</text>
+              </view>
+            </view>
+						<view style="font-size: 26rpx;color: rgba(100, 101, 102, 1);line-height: 44rpx;word-break: break-word;">
+                <block wx:for="{{meet.MEET_OBJ.experience}}" wx:key="key">
+                  <view wx:if="{{item.type=='text'}}">
+                    {{item.val}}
+                  </view>
+                </block>
+            </view>
+            <view style="width: 100%;height: 30rpx;"></view>
+          </block>
+          <block wx:else>
+            <view style="display: flex;justify-content: space-between;align-items: center;">
+              <view style="font-size: 32rpx;line-height: 70rpx;">
+                地址
+              </view>
+              <view wx:if="{{!isSelf}}" data-type="navigate" bindtap="url" data-url="{{'../../admin/meet/edit/admin_meet_edit?id=' + id}}" style="display: flex;justify-content: space-between;align-items: center;">
+                <image style="width: 30rpx;height: 30rpx;" src="../../../images/my/mypage/编辑资料-蓝.png" mode=""/>
+                <text style="font-size: 25rpx;line-height: 30rpx;color: #4059ff;">编辑</text>
+              </view>
+            </view>
+						<view style="font-size: 26rpx;color: rgba(100, 101, 102, 1);line-height: 44rpx;word-break: break-word;">
+                <block wx:for="{{meet.MEET_OBJ.address}}" wx:key="key">
+                  <view wx:if="{{item.type=='text'}}">
+                    {{item.val}}
+                  </view>
+                </block>
+            </view>
+            <view style="width: 100%;height: 30rpx;"></view>
+          </block>
+          <block>
+            <view style="display: flex;justify-content: space-between;align-items: center;">
+              <view style="font-size: 32rpx;line-height: 70rpx;">
+                照片
+              </view>
+              <view wx:if="{{!isSelf}}" data-type="navigate" bindtap="url" data-url="{{'../../admin/meet/edit/admin_meet_edit?id=' + id}}" style="display: flex;justify-content: space-between;align-items: center;">
+                <image style="width: 30rpx;height: 30rpx;" src="../../../images/my/mypage/编辑资料-蓝.png" mode=""/>
+                <text style="font-size: 25rpx;line-height: 30rpx;color: #4059ff;">编辑</text>
+              </view>
+            </view>
+						<view class="editor-pictures">
+                <view class="item pic" wx:for="{{meet.MEET_OBJ.photo}}" wx:key="key" style="background-color: #000;">
+                  <image bind:tap="preview" data-url="{{item.val}}" src="{{item.val}}" style="width: 100%;height: 100%;" mode="aspectFit" />
+                </view>
+            </view>
+            <view style="width: 100%;height: 30rpx;"></view>
+          </block>
+          <block>
+            <view style="display: flex;justify-content: space-between;align-items: center;">
+              <view style="font-size: 32rpx;line-height: 70rpx;">
+                视频
+              </view>
+              <view wx:if="{{!isSelf}}" data-type="navigate" bindtap="url" data-url="{{'../../admin/meet/edit/admin_meet_edit?id=' + id}}" style="display: flex;justify-content: space-between;align-items: center;">
+                <image style="width: 30rpx;height: 30rpx;" src="../../../images/my/mypage/编辑资料-蓝.png" mode=""/>
+                <text style="font-size: 25rpx;line-height: 30rpx;color: #4059ff;">编辑</text>
+              </view>
+            </view>
+						<view class="editor-videos">
+                <view class="item pic" wx:for="{{meet.MEET_OBJ.video}}" wx:key="key">
+                  <video src='{{item.val}}' style="width: 100%;height: 100%;" mode='aspectFill'></video>
+                </view>
+            </view>
+            <view style="width: 100%;height: 30rpx;"></view>
+          </block>
+          <block wx:if="{{meet.MEET_CATE_ID==1}}">
+            <view style="font-size: 32rpx;line-height: 70rpx;">
+              参考价
+            </view>
+						<view style="font-size: 26rpx;color: red;line-height: 44rpx;">
+              {{meet.MEET_OBJ.price}}
+            </view>
+          </block>
+				</view>
+			</view>
+
+			<block wx:if="{{cur=='time'}}">
+				<block wx:if="{{days.length>0}}">
+					<scroll-view scroll-x class="date" enable-flex="{{true}}">
+						<view bindtap="bindDayTap" data-idx="{{index}}" class="date-inner" wx:for="{{days}}" wx:key="key" wx:for-index="index">
+							<view class="item {{dayIdx==index?'cur':''}}">
+
+								<text wx:if="{{dayIdx==index&&item.status!='今天'}}" class="status cur"><text class="icon-check"></text></text>
+								<text wx:else class="status {{item.status=='今天'?'bg-red':''}}">{{item.status||'可约'}}</text>
+
+								<text class="week">{{item.week}}</text>
+								<text class="day">{{item.date}}</text>
+							</view>
+						</view>
+					</scroll-view>
+
+					<view class="time-title">请选择时段</view>
+					<view class="time">
+						<view bindtap="bindTimeTap" data-timeidx="{{idx}}" wx:for="{{days[dayIdx].times}}" wx:key="k1" wx:for-item="itm" wx:for-index="idx" class="item {{(timeIdx==idx)?'cur':''}} {{itm.error?'selected':''}}">
+							<block wx:if="{{!itm.error}}">
+								<text wx:if="{{timeIdx!=idx}}" class="status">可约</text>
+								<text wx:else class="status"><text class="icon-check"></text></text>
+							</block>
+
+							<text class="t1">{{index}}{{itm.start}}~{{itm.end}}</text>
+							<text wx:if="{{!itm.error&&itm.isLimit&&itm.limit>1}}" class="t3">剩余:{{itm.limit-itm.stat.succCnt}}</text>
+							<text wx:if="{{!itm.error&&!itm.isLimit}}" class="t3">人数不限</text>
+							<text wx:if="{{itm.error}}" class="t3">{{itm.error}}</text>
+						</view>
+					</view>
+					<View style="height: 250rpx;"></View>
+				</block>
+				<view wx:elif="{{days.length==0}}" class="margin-top load notexist text-l load-project day-load"></view>
+				<view wx:else class="margin-top load loading text-l load-project"></view>
+			</block>
+
+			<block wx:if="{{cur=='photo'}}">
+				<view class="article" style="display: flex;flex-direction: column;align-items: center;">
+					<block wx:for="{{meet.MEET_OBJ.photo}}" wx:key="key">
+							<image style="margin-top: 20rpx;" bindtap="url" data-type='img' data-url="{{item.val}}" show-menu-by-longpress="{{true}}" class="loading" mode='widthFix' lazy-load="true" src="{{item.val}}">
+							</image>
+					</block>
+				</view>
+
+				<view style="height:200rpx"></view>
+			</block>
+
+      <block wx:if="{{cur=='vedio'}}">
+				<block wx:for="{{meet.MEET_OBJ.video}}" wx:key="key">
+					<video src='{{item.val}}' style="width: 700rpx;height: 400rpx;margin: 25rpx;border-radius: 14rpx;" mode='aspectFill'></video>
+				</block>
+
+				<view style="height:200rpx"></view>
+			</block>
+		</view>
+
+	</view>
+	<view style="z-index: 10;" wx:if="{{days.length>0}}" class="bottom safe-bottom">
+		<view class="inner">
+        <button wx:if="{{isShop==2&&!isBlack}}" class="yuyue" bindtap="bindJoinTap">预约</button>
+		</view>
+	</view>
+</block>
+
+
+<!-- 底部弹窗 -->
+<view class="popup-box" wx:if="{{showIndex=='2'}}" bindtap="closePopup"></view> 
+<view class="info-bottom" wx:if="{{showIndex=='2'}}">
+  <view style="display: flex;justify-content: center;justify-content: space-between;padding: 30rpx 30rpx;">
+    <view>
+      加入黑名单
+    </view>
+    <view>
+      <switch checked="{{isBlack}}" bindchange="joinBlack"/>
+    </view>
+  </view>
+  <view bind:tap="closePopup" style="text-align: center;">
+    取消
+  </view>
+</view>

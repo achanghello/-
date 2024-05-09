@@ -1,0 +1,9 @@
+{
+	"usingComponents": { 
+		"cmpt-picker-multi": "/cmpts/public/picker_multi/picker_multi_cmpt",
+		"cmpt-calendar": "/cmpts/public/calendar/calendar_meet/calendar_meet_cmpt"
+	},
+	"navigationBarBackgroundColor": "#fff",
+	"navigationBarTextStyle": "black", 
+	"navigationBarTitleText": "预约时间设置"
+}

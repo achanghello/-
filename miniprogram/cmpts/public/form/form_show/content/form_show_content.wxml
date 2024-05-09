@@ -1,0 +1,13 @@
+<view class="main-admin" wx:if="{{cmptFormName==='introduce'||cmptFormName==='experience'||cmptFormName==='address'}}">
+	<cmpt-editor nodeList="{{formContent}}" upDirectDir="{{upDirectDir}}" viewMode="{{true}}" style="width: 100%;" id="contentEditor"></cmpt-editor>
+</view>
+<view class="main-admin" wx:if="{{cmptFormName==='photo'}}">
+	<cmpt-editor-image nodeList="{{formContent}}" upDirectDir="{{upDirectDir}}" viewMode="{{true}}" style="width: 100%;" id="contentEditor"></cmpt-editor-image>
+</view>
+<view class="main-admin" wx:if="{{cmptFormName==='video'}}">
+	<cmpt-editor-video nodeList="{{formContent}}" upDirectDir="{{upDirectDir}}" viewMode="{{true}}" style="width: 100%;" id="contentEditor"></cmpt-editor-video>
+</view>
+
+<view class="foot">
+	<button bindtap="bindSaveTap">保存</button>
+</view>

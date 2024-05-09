@@ -1,0 +1,30 @@
+<block wx:for="{{fields}}" wx:key="key">
+	<block>
+    <block wx:if="{{item.type=='text'}}">
+      <view class="form-group" id="form{{item.mark}}">
+        <view class="title {{item.must?'must':''}}">{{item.title}}:</view>
+        <input placeholder="{{item.desc||'请填写'+item.title}}" placeholder-class="phc" maxlength="{{item.max}}" bindinput="bindLineBlur" data-idx="{{index}}" value="{{item.val}}" focus="{{item.focus}}"></input>
+      </view>
+      <view wx:if="{{item.focus}}" class="hint-desc error">{{item.focus}}</view>
+        <view wx:if="{{item.ext.hint}}"  class="hint-desc info">{{item.ext.hint}}</view>
+    </block>
+
+    <block wx:if="{{item.type=='textarea'}}">
+      <view class="form-group mytitle" id="form{{item.mark}}">
+        <view class="title {{item.must?'must':''}}">{{item.title}}:</view>
+          <textarea placeholder="{{item.desc||'请填写'+item.title}}" placeholder-class="phcq" maxlength="{{item.max}}" data-idx="{{index}}" value="{{item.val}}" focus="{{item.focus}}" auto-height="true" cursor-spacing="60" bindinput="bindLineBlur"></textarea>
+      </view>
+      <view wx:if="{{item.focus}}" class="hint-desc error">{{item.focus}}</view>
+        <view wx:if="{{item.ext.hint}}"  class="hint-desc info">{{item.ext.hint}}</view>
+    </block>
+  </block>
+</block>
+
+<cmpt-modal model:show="{{showCheckModal}}" type="longdialog" title="请核对填写的信息" bind:click="bindSubmitCmpt" class="modal-check-info" slot-class="slot-class" cancelText="返回修改" confirmText="确认提交">
+
+<view class="item" wx:for="{{forms}}" wx:key="key">
+  <view class="title">{{item.title}}：</view>
+  <view class="content" wx:if="{{item.val===true|| item.val===false}}">{{item.val?'是':'否'}}</view>
+  <view class="content" wx:else>{{item.val}}</view>
+</view>
+</cmpt-modal>

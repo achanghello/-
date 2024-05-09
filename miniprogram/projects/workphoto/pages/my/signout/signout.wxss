@@ -1,0 +1,82 @@
+page {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  padding-top: 20rpx;
+}
+
+.foot button {
+  width: 640rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  border-radius: 100rpx;
+  font-weight: 500;
+  color: #f2f4f9;
+  background-color: #585CE5;
+  box-shadow: 0px 14rpx 80rpx  rgba(0, 29, 176, 0.3);
+  margin-top: 250rpx;
+}
+
+.foot button:active {
+  background-color: rgba(0, 29, 176, 0.3);
+}
+.foot button[disabled] {
+  color: #fff;
+  background: rgba(88, 92, 229, 0.6);
+}
+
+.information {
+  background-color: #fff;
+  width: 100%;
+  height: 100%;
+  padding-top: 30rpx;
+}
+
+.information .image {
+  width: 100rpx;
+  height: 100rpx;
+  margin: 0 auto;
+}
+.information .image image {
+  width: 100%;
+  height: 100%;
+}
+
+.information .desc {
+  padding: 20rpx 50rpx;
+  font-size: 32rpx;
+  font-weight: 500;
+  letter-spacing: 0rpx;
+  line-height: 52rpx;
+  color: rgba(0, 0, 0, 1);
+  text-align: left;
+  vertical-align: top;
+}
+
+.information .intro {
+  width: 650rpx;
+  background-color: rgba(245, 245, 247, 1);
+  margin: 30rpx auto;
+  border-radius: 10rpx;
+  padding: 20rpx;
+}
+
+.information .intro .item {
+  font-size: 26rpx;
+  font-weight: 400;
+  letter-spacing: 0px;
+  line-height: 34px;
+  color: rgba(100, 101, 102, 1);
+  text-align: left;
+  vertical-align: top;
+}
+
+.information .intro .item::before {
+  content: ".";
+  display: inline-block;
+  font-size: 50rpx;
+  line-height: 20rpx;
+  color: 212, 214, 217, 1;
+  position: relative;
+  top: -8rpx;
+}

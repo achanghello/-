@@ -1,0 +1,7 @@
+{
+	"usingComponents": {},
+	"enablePullDownRefresh": true,
+  "navigationBarTitleText": "黑名单",
+  "navigationBarBackgroundColor": "#efefef",
+	"navigationBarTextStyle": "black"
+}

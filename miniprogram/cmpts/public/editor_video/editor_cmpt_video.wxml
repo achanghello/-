@@ -1,0 +1,19 @@
+<view>
+		<view class="editor-node-wrapper">
+			<view class="editor-video">
+        <block wx:for="{{nodeList}}" wx:for-item="node" wx:key="index">
+          <view class="item video">
+            <!-- <text>{{ node.val }}</text> -->
+            
+            <video src="{{node.val + '?timestamp=' + timestamp}}" mode='aspectFill'></video>
+            <view class="delete" bind:tap="delete" data-index="{{index}}">
+              <image style="width: 60%;height: 60%;" src="../../../projects/workphoto/images/my_join_list/删除.png" mode=""/>
+            </view>
+          </view>
+        </block>
+        <view wx:if="{{ nodeList.length<3 }}" class="item add" bind:tap="bindAddImageTap">
+          <image src="../../../projects/workphoto/images/my/edit/加号.png" mode=""/>
+        </view>
+      </view> 
+		</view>
+</view>

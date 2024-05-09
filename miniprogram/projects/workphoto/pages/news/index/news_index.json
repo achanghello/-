@@ -1,0 +1,8 @@
+{
+	"usingComponents": { 
+	}, 
+	"disableScroll": true, 
+  "navigationBarTitleText": "通知",
+  "navigationBarBackgroundColor": "#efefef",
+	"navigationBarTextStyle": "black"
+}

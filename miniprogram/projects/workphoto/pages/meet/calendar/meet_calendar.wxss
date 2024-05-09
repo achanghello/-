@@ -1,0 +1,136 @@
+@import "../../../../../style/public/article_list.wxss";
+@import "../../../style/skin.wxss";
+
+.main {
+	padding: 0 0 20rpx;
+}
+
+.main .plan-date {
+	width: 100%;
+	position: sticky;
+	top: 0;
+	z-index: 999;
+	box-shadow: var(--ShadowSize) var(--greyShadow);
+}
+
+.main .list {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	padding: 30rpx 20rpx;
+}
+
+.main .list .item {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 100rpx;
+	padding: 0 30rpx 0 0;
+	background-color: #fff;
+	margin-bottom: 30rpx;
+	border-radius: 10rpx;
+	overflow: hidden;
+}
+
+.main .list .item .left {
+	width: 8rpx;
+	height: 100rpx;
+	margin-right: 15rpx;
+
+}
+
+.main .list .item .img {
+	width: 65rpx;
+	height: 65rpx;
+	border-radius: 10rpx;
+	position: relative; 
+}
+
+.main .list .item .title {
+	flex: 1;
+	text-align: left;
+	font-size: 28rpx;
+	font-weight: bold;
+	color: #333;
+	margin-left: 20rpx;
+}
+
+.main .list .item .time {
+	width: 140rpx;
+	text-align: right;
+	font-size: 26rpx;
+	color: #999;
+}
+
+.main .list .no-project {
+	padding: 30rpx 30rpx;
+	font-size: 28rpx;
+}
+
+
+
+.text-pic-list-box .item {
+	padding: 20rpx 30rpx 20rpx 40rpx;
+	position: relative;
+	overflow: hidden;
+}
+
+.text-pic-list-box .item .status {
+	font-size: 24rpx;
+	background-color: #ccc;
+  padding: 10rpx 20rpx 10rpx;
+  border-radius: 10rpx;
+	color: #fff;
+}
+
+.text-pic-list-box .item .qr {
+	z-index: 9999;
+	position: absolute;
+	top: 0;
+	right: 0;
+	font-size: 24rpx;
+	border-bottom-left-radius: 10rpx;
+	background-color: #f2f2f2;
+	padding: 0rpx 10rpx 0rpx;
+	color: #666;
+	font-size: 40rpx;
+}
+
+.btn.mid {
+	padding: 0 30rpx;
+}
+
+.text-pic-list-box .item .author {
+	margin-top: 10rpx;
+	font-size: 28rpx;
+	color: #999;
+}
+
+.text-pic-list-box .item .title {
+	position: relative;
+	padding-right: 20rpx;
+	padding-top: 40rpx;
+	font-size: 32rpx;
+}
+
+.text-pic-list-box .item .data {
+	line-height: 1.5;
+	font-size: 26rpx;
+	color: #666;
+	margin-top: 10rpx;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.text-time {
+	color: #ccc;
+}
+
+.text-pic-list-box .item .title {
+	max-height: unset !important
+}
+ 

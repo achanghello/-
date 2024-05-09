@@ -1,0 +1,88 @@
+<view wx:if="{{isLoad===null}}" class="margin-top load notexist text-l load-project"></view>
+<view wx:if="{{isLoad===false}}" class="margin-top load loading text-l load-project"></view>
+
+<block wx:if="{{isLoad}}">
+	<view class="main padding-project">
+		<view class="text-pic-list-box margin-top-xs">
+			<view class="item card-project shadow-project">
+        
+				<view class="title-line" bindtap="url" data-url="../detail/meet_detail?id={{user.MEET_CATE_ID==2?join.JOIN_MEET_ID:join.JOIN_USER_ID}}">
+					<view class="title content-cut-two">{{user.MEET_CATE_ID==2?join.JOIN_MEET_TITLE:join.JOIN_USER_TITLE}}
+            <view class="status bg-grey light" wx:if="{{join.isTimeout}}">已过期</view>
+            <view class="status bg-grey light" wx:elif="{{join.JOIN_STATUS==0}}">已取消</view>
+            <block wx:elif="{{join.JOIN_STATUS==1}}">
+              <view class="status bg-green light" wx:if="{{join.JOIN_IS_CHECKIN==0&&user.MEET_CATE_ID===1}}">待演出</view>
+              <view class="status bg-green light" wx:elif="{{join.JOIN_IS_CHECKIN==0&&user.MEET_CATE_ID===2}}">待合作</view>
+              <view class="status bg-blue light" wx:elif="{{join.JOIN_IS_CHECKIN==1}}">已完成</view>
+            </block>
+            <block wx:elif="{{join.JOIN_STATUS==2}}">
+              <view class="status bg-blue light" wx:if="{{join.JOIN_IS_CHECKIN==0&&user.MEET_CATE_ID===1}}">待确认</view>
+              <view class="status bg-blue light" wx:elif="{{join.JOIN_IS_CHECKIN==0&&user.MEET_CATE_ID===2}}">待通过</view>
+            </block> 
+          </view>
+					<view class="arrow"><text class="icon-right"></text></view>
+				</view>
+        <view>
+          <view style="margin: 20rpx 0;display: flex;justify-content: space-between;">
+            <view style="display: flex;align-items: center;"> 
+              <image style="width: 30rpx;height: 30rpx;margin-right:10rpx;" src="../../../images/my_join_list/时间.png" mode=""/>
+              <text class="text-cut" style="font-size: 25rpx;">时间：{{join.JOIN_MEET_DAY}} {{join.JOIN_MEET_TIME_START}}～{{join.JOIN_MEET_TIME_END}}</text>
+            </view>
+          </view>
+          <view style="display: flex;align-items: center;">
+              <image style="width: 30rpx;height: 30rpx;margin-right:10rpx;" src="../../../images/my_join_list/地址.png" mode=""/>
+              <text class="text-cut" style="font-size: 25rpx;">地址：{{join.JOIN_ADDRESS}}</text>
+          </view>
+			  </view>
+
+				<view class="oprt" wx:if="{{join.JOIN_STATUS==1 && join.JOIN_IS_CHECKIN==0}}">
+					<view bindtap="url" data-url="../../my/index/my_index" data-type="relaunch" wx:if="{{isShowHome}}" class="btn margin-right-s">返回首页</view>
+					<view bindtap="bindCalendarTap" class="btn bg-yellow light"><text class="icon-add"></text>加入手机日程</view>
+				</view> 
+
+			</view>
+
+		</view>
+
+    <view class="info-list-box" wx:if="{{join.JOIN_STATUS==1&&join.JOIN_IS_CHECKIN==0&&user.MEET_CATE_ID==2}}">
+			<view class="item card-project shadow-project">
+				<view class="info">
+					<view class="center"><text class="text-bold margin-right-s">预约码</text> (向歌手出示进行核销)</view>
+				</view>
+				<view class="info">
+					<view class="center">
+						<image show-menu-by-longpress="{{true}}" src="{{qrImageData}}" class="loading" />
+					</view>
+				</view>
+			</view>
+		</view>
+
+		<view class="info-list-box margin-bottom-xxl">
+			<view class="item card-project shadow-project">
+				<view class="info margin-bottom-s">
+					<view class="left text-bold">预约信息</view>
+				</view>
+        <view class="info" wx:for="{{join.JOIN_FORMS}}" wx:key="key">
+					<view class="content">{{item.title}}：{{item.val}}</view>
+				</view>
+
+        <view class="info" wx:key="key">
+					<view class="content">预约时间：{{join.JOIN_ADD_TIME}}</view>
+				</view>
+        <view style="height: 150rpx;width: 100%;"></view>
+				<!-- <view class="info text-grey margin-top-xs text-s">提交时间：{{join.JOIN_ADD_TIME}}</view>
+				<view wx:if="{{join.JOIN_STATUS==1&&join.JOIN_IS_CHECKIN==1}}" class="info text-grey margin-top-xs text-s">核销时间：{{join.JOIN_CHECKIN_TIME}}</view> -->
+			</view>
+		</view>
+
+    <view>
+      <button wx:if="{{join.JOIN_STATUS==1&&join.JOIN_IS_CHECKIN==0}}" class="phone" bind:tap="bindCancelTap">取消</button>
+      <button wx:if="{{join.JOIN_STATUS==2&&join.JOIN_IS_CHECKIN==0&&user.MEET_CATE_ID===2}}" class="phone" bind:tap="bindCancelTap">取消</button>
+      
+      <view class="enter" wx:if="{{join.JOIN_STATUS==2&&join.JOIN_IS_CHECKIN==0&&user.MEET_CATE_ID===1}}">
+        <button style="background-color: #585CE5;" bind:tap="bindEnterTap">确认</button>
+        <button bind:tap="bindCancelTap">取消</button>
+      </view>
+    </view>
+	</view>
+</block>

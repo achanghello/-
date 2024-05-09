@@ -1,0 +1,11 @@
+@import "../add/admin_meet_add.wxss";
+
+.save {
+  width: 640rpx;
+  height: 100rpx;
+  border-radius: 100rpx;
+  font-weight: 500;
+  background-color: #585CE5;
+  line-height: 100rpx;
+  color: aliceblue;
+}

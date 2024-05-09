@@ -1,0 +1,72 @@
+
+<view class="main-home">
+	<view class="up">
+    <view>
+      <import src="../../../../../tpls/project/default_index_tpl" />
+      <template is="main-search" data="{{city}}" />
+      <view style="width: 750rpx;height: 175rpx;"></view>
+      <template is="swiper" data="{{ bannerlist }}" />
+    </view>
+	</view>
+	<view class="down">
+		<view class="area shadow-project1">
+			<view class="hot-line" bindtap="url" data-url="../../meet/index/meet_index?id=1">
+				<view class="left">歌手推荐</view>
+				<view class="right">更多歌手»</view>
+			</view>
+
+			<view wx:if="{{!meetList}}" class="margin-top load loading text-l load-project"></view>
+      <view wx:if="{{meetList.length===0}}" style="display: flex;justify-content: center;align-items: center;">
+        <image src="cloud://achang-1ghps5r5e2739b74.6163-achang-1ghps5r5e2739b74-1314031900/workphoto/images/空状态.png" mode=""/>
+      </view>
+			<view class="scroll-x">
+				<scroll-view scroll-x="{{true}}" class="comm-list-scroll">
+					<view class="item-scroll" wx:for="{{meetList}}" wx:key="key" bindtap="url" data-url="../../meet/detail/meet_detail?id={{item._id}}">
+						<image lazy-load="{{true}}" class="loading shadow" src="{{item.MEET_OBJ.avatar}}" mode="aspectFill"></image>
+              <view class="title text-cut" style="font-size: 24rpx;color: rgba(26, 26, 26, 1);">{{item.MEET_OBJ.name}}</view>
+              <view class="title text-cut" style="font-size: 20rpx;color: rgba(100, 101, 102, 1);">{{item.MEET_OBJ.area}} {{item.favedCnt}}人收藏</view>
+              <image catch:tap="bindFavTap" data-index="{{index}}" data-item="{{item}}" wx:if="{{ item.collected>0 }}" class="add" src="../../../images/home/添加收藏-禁用.png" mode=""/>
+              <image catch:tap="bindFavTap" data-index="{{index}}" data-item="{{item}}" wx:else class="add" src="../../../images/home/添加收藏.png" mode=""/>
+					</view>
+				</scroll-view>
+			</view>
+		</view>
+
+		<view class="area shadow-project1">
+			<view class="hot-line">
+				<view class="left">全部歌手</view>
+			</view>
+
+      <view wx:if="{{meetList.length===0}}" style="display: flex;justify-content: center;align-items: center;">
+        <image src="cloud://achang-1ghps5r5e2739b74.6163-achang-1ghps5r5e2739b74-1314031900/workphoto/images/空状态.png" mode=""/>
+      </view>
+			<view wx:if="{{!meetList}}" class="margin-top load loading text-l load-project"></view>
+			<view wx:else class="comm-list-box">
+				<block wx:for="{{meetList}}" wx:key="key">
+					<view class="item" bindtap="url" data-url="../../meet/detail/meet_detail?id={{item._id}}">
+						<image mode="aspectFill" lazy-load="{{true}}" class="left" src="{{item.MEET_OBJ.avatar}}">
+						</image>
+						<view class="center">
+							<view style="font-size: 28rpx;color: rgba(26, 26, 26, 1);">{{item.MEET_OBJ.name}}</view>
+							<view style="font-size: 20rpx;color: rgba(100, 101, 102, 1);">
+								{{item.MEET_OBJ.area}} {{item.favedCnt}}人收藏
+							</view>
+						</view>
+            <view class="right-collection">
+              <image catch:tap="bindFavTap" data-index="{{index}}" data-item="{{item}}" wx:if="{{ item.collected>0 }}" style="width: 50rpx;height: 50rpx;" src="../../../images/home/星星2.png" mode=""/>
+              <image catch:tap="bindFavTap" data-index="{{index}}" data-item="{{item}}" wx:else style="width: 50rpx;height: 50rpx;" src="../../../images/home/星星.png" mode=""/>
+            </view>
+					</view>
+          <view class="line"></view>
+				</block>
+			</view>
+		</view>
+	</view>
+  <view style="height: 100rpx;width: 750rpx;"></view>
+</view>
+
+
+<block>
+  <import src="../../tpls/menu_tpl.wxml" />
+	<template is="menuTpl" data="{{curMenu:'home_index',returnHome:false}}" />
+</block>

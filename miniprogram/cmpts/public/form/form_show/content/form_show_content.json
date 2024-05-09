@@ -1,0 +1,10 @@
+{
+	"usingComponents": { 
+    "cmpt-editor": "/cmpts/public/editor/editor_cmpt",
+    "cmpt-editor-image": "/cmpts/public/editor_image/editor_cmpt_image",
+    "cmpt-editor-video": "/cmpts/public/editor_video/editor_cmpt_video"
+	}, 
+  "navigationBarTitleText": "编辑",
+  "navigationBarBackgroundColor": "#fff",
+	"navigationBarTextStyle": "black"
+}

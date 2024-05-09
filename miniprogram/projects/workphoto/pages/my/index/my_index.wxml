@@ -1,0 +1,147 @@
+<view class="main" style="margin-top: 130rpx;">
+	<view class="top">
+		<view wx:if="{{user}}" class="inner">
+			<view class="avatar" data-type="navigate" bindtap="url" data-url="{{'../../admin/meet/edit/admin_meet_edit?id=' + user._id}}">
+				<image wx:if="{{user.MEET_OBJ.avatar}}" src="{{user.MEET_OBJ.avatar + '?timestamp=' + timestamp}}" mode="aspectFill"></image>
+        <image wx:else src="../../../images/my/center/默认头像.png" mode="aspectFill"></image>
+			</view>
+			<view class="center" data-type="navigate" bindtap="url" data-url="{{'../../admin/meet/edit/admin_meet_edit?id=' + user._id}}">
+				<view class="line1">
+					<view wx:if="{{user.MEET_OBJ.name}}" class="name">{{user.MEET_OBJ.name}}
+            <image style="width: 30rpx;height: 30rpx;" src="../../../images/my/edit/编辑资料.png" mode=""/>
+          </view>
+          <view wx:else class="name">未设置
+            <image style="width: 30rpx;height: 30rpx;" src="../../../images/my/edit/编辑资料.png" mode=""/>
+          </view>
+          
+				</view>
+				<view class="line2">
+          <view class="tag-list  text-cut" style="display: flex;align-items: center;">
+            <wxs module="computed">
+              module.exports = {
+                computedAge:function(birthday,date){
+                  var d1 = birthday.slice(0,4)
+                  var d2 = parseInt(d1)
+                  var d3 = parseInt(date)
+
+                  return d3-d2>0?d3-d2:0
+                },
+                computedSex:function(sex){
+                  if(sex==='1'){
+                    return '../../../images/my/center/男性.png'
+                  }else if(sex==='2'){
+                    return '../../../images/my/center/女性.png'
+                  }else{
+                    return ''
+                  }
+                }
+              }
+            </wxs>
+            <image wx:if="{{user.MEET_OBJ.sex}}" style="width: 30rpx;height: 30rpx;margin-right: 8rpx;" src="{{computed.computedSex(user.MEET_OBJ.sex)}}" mode=""/>
+            
+            <text wx:if="{{user.MEET_OBJ.birthday}}" class="tag" style="background: none;padding: 0;">{{ computed.computedAge(user.MEET_OBJ.birthday,date)}}岁</text> 
+						<text class="tag" style="background: none;padding: 0;">{{user.MEET_CATE_NAME}}</text> 
+						<text class="tag" style="background: none;padding: 0;">{{user.MEET_OBJ.area}}</text>
+					</view>
+        </view>
+        <view class="line3">
+          <view wx:if="{{user.MEET_OBJ.introduce[0].val}}">{{user.MEET_OBJ.introduce[0].val}}</view>
+          <view wx:else>这个家伙很懒,什么也没说...</view>
+        </view>
+			</view>
+      <view class="right" bindtap="url" data-url="{{(user.MEET_OBJ.avatar?'../../meet/detail/meet_detail?id=':'../../admin/meet/edit/admin_meet_edit?id=') + user._id }}">个人主页<text class="icon-right"></text></view>
+		</view>
+    <view wx:else class="inner" bindtap="url" data-url="/projects/workphoto/pages/my/regway/index">
+			<view class="avatar">
+				<image src="../../../images/my/center/默认头像.png" mode="aspectFill"></image>
+			</view>
+			<view class="center">
+				<view class="line1">
+					<view class="name">注册 / 登录</view>
+				</view>
+				<view class="line2">
+          <view>编辑个人资料</view>
+        </view>
+        <view class="line3">
+          <view>这个家伙很懒,什么也没说...</view>
+        </view>
+			</view>
+      <view class="right">个人主页<text class="icon-right"></text></view>
+		</view>
+	</view>
+
+  <view class="meet-menu shadow-project">
+		<view class="inner">
+			<view class="item" bindtap="url" data-url="../../meet/my_join_list/meet_my_join_list?status=use">
+				<view class="img">
+					<image src="../../../images/my/center/快速入口-预约.png" />
+				</view>
+				<text>预约</text>
+			</view>
+      
+			<view wx:if="{{ user.MEET_CATE_ID!==2 }}" class="item" bindtap="url" data-url="/projects/workphoto/pages/work/meet/scan/work_meet_scan">
+				<view class="img">
+					<image src="../../../images/my/center/快速入口-核销.png" />
+				</view>
+				<text>核销</text>
+			</view>
+			<view class="item" bindtap="url" data-url="/projects/workphoto/pages/my/fav/my_fav">
+				<view class="img">
+					<image src="../../../images/my/center/快速入口-收藏.png" />
+				</view>
+				<text>收藏</text>
+			</view>
+      <view wx:if="{{ user.MEET_CATE_ID===2 }}" class="item" bindtap="url" data-url="../foot/my_foot">
+				<view class="img">
+					<image src="../../../images/my/center/快速入口-浏览.png" />
+				</view>
+				<text>浏览</text>
+			</view>
+			<view class="item" bindtap="url" data-url="/projects/workphoto/pages/news/index/news_index">
+				<view class="img" style="position: relative;">
+					<image src="../../../images/my/center/快速入口-通知.png" />
+          <view wx:if="{{user.notice>0}}" style="width: 30rpx;height: 30rpx;background-color: red;line-height: 30rpx;text-align: center;color: #fff;border-radius: 50%;font-size: 20rpx;position: absolute;right:0;top:0;">{{user.notice}}</view>
+				</view>
+				<text>通知</text>
+			</view>
+		</view>
+	</view>
+
+  <view class="list-menu shadow-project" style="min-height: 850rpx;">
+    <view wx:if="{{ user.MEET_CATE_ID!==2 }}" class="item" bindtap="url" data-url="../foot/my_foot">
+			<view class="title">
+				<image style="width: 40rpx;height: 40rpx;margin-right: 15rpx;" src="../../../images/my/center/列表-历史浏览.png" mode=""/>
+				<text>历史浏览</text>
+			</view>
+      <text class="icon-right"></text>
+		</view>
+    <view class="item" bindtap="url" data-url="../../about/index/about_index?key=SETUP_CONTENT_ABOUT">
+			<view class="title">
+				<image style="width: 40rpx;height: 40rpx;margin-right: 15rpx;" src="../../../images/my/center/列表-关于我们.png" mode=""/>
+				<text>关于我们</text>
+			</view>
+      <text class="icon-right"></text>
+		</view>
+		<view class="item" bindtap="url" data-url="../../about/customerservice/customerservice">
+			<view class="title">
+				<image style="width: 40rpx;height: 40rpx;margin-right: 15rpx;" src="../../../images/my/center/列表-联系客服.png" mode=""/>
+				<text>联系客服</text>
+			</view>
+      <text class="icon-right"></text>
+		</view>
+
+		<view class="item" bindtap="url" data-url="../setting/index">
+			<view class="title">
+				<image style="width: 40rpx;height: 40rpx;margin-right: 15rpx;" src="../../../images/my/center/列表-设置.png" mode=""/>
+				<text>设置</text>
+			</view>
+      <text class="icon-right"></text>
+		</view>
+
+	</view>
+</view>
+
+<block>
+	<import src="../../tpls/menu_tpl.wxml" />
+	<template is="menuTpl" data="{{curMenu:'my_index',returnHome:false}}" />
+</block>

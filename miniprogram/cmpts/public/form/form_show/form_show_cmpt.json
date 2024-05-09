@@ -1,0 +1,11 @@
+{
+	"component": true,
+	"usingComponents": {
+		"cmpt-checkbox": "/cmpts/public/checkbox/checkbox_cmpt",
+		"cmpt-radio": "/cmpts/public/radio/radio_cmpt",
+		"cmpt-rows": "/cmpts/public/rows/rows_cmpt",
+    "cmpt-img-upload": "/cmpts/public/img/img_upload_cmpt",
+    "cmpt-aimg-upload": "/cmpts/public/aimg/aimg_upload_cmpt",
+    "cmpt-vedio-upload": "/cmpts/public/vedio/vedio_upload_cmpt"
+  }
+}

@@ -1,0 +1,8 @@
+{
+	"usingComponents": { 
+	}, 
+	"disableScroll": true, 
+  "navigationBarTitleText": "全部歌手",
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle": "black"
+}

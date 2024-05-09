@@ -1,0 +1,29 @@
+<view style="padding-left: 30rpx;margin-bottom: 30rpx;">
+  <text style="color: rgba(100, 101, 102, 1);">
+    当前您绑定的手机号为<text style="color: rgba(0, 81, 255, 1);">{{phone}}</text>
+  </text>
+</view>
+
+<view class="form-item">
+  <view class="title">
+    手机号
+  </view>
+  <view class="phone">
+    <input model:value="{{newphone}}" maxlength="{{11}}" placeholder="请输入新的手机号" />
+  </view>
+</view>
+
+<view class="form-item">
+  <view class="title">
+    验证码
+  </view>
+  <view class="code">
+    <input model:value="{{testCode}}" maxlength="{{6}}" placeholder="请输入短信验证码" />
+  </view>
+  <view class="getcode" bind:tap="startClock">{{ textText }}</view>
+</view>
+
+
+<view class="foot">
+    <button disabled="{{ choose===2 }}" bind:tap="changePhone">保存</button>
+  </view>

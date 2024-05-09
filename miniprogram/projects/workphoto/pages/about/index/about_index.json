@@ -1,0 +1,8 @@
+{
+	"usingComponents": { 
+	  },
+  "enablePullDownRefresh": true,
+  "navigationBarTitleText": "关于我们",
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle": "black"
+  }

@@ -1,0 +1,28 @@
+@import "style/base/comm.wxss";
+@import "style/public/project.wxss"; 
+
+
+/* 未选中的背景样式 */
+checkbox .wx-checkbox-input{
+  margin-right: 10rpx;
+  width: 30rpx; 
+  height: 30rpx;
+}
+
+/* 选中后的勾子样式 */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before{
+  width: 30rpx;
+  height: 30rpx;
+  line-height: 30rpx;
+  text-align: center;
+  font-size:32rpx; 
+  color:#FFF; 
+  background: transparent;
+  transform:translate(-50%, -50%) scale(1);
+  -webkit-transform:translate(-50%, -50%) scale(1);
+}
+
+checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+  border: solid 1px #37C674;
+  background: #37C674;
+}

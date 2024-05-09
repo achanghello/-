@@ -1,0 +1,42 @@
+<view class="reg">
+  <image class="logo" src="../../../images/my/regway/logo.png" mode=""/>
+	<include src="../reg/user_form" /> 
+
+  <button class="phone" type="primary" bind:tap="OneClickLogin">登录</button>
+  <view class="down">
+    <checkbox-group bindchange="checkboxChange">  
+      <label>  
+        <checkbox value="true" />
+        <text style="color:#969799;">我已阅读并同意</text>
+        <text style="color:#3347FF" bindtap="userAgreement">《用户协议》</text>
+        <text style="color:#969799;">和</text>
+        <text style="color:#3347FF" bindtap="userAgreement">《隐私协议》</text>  
+      </label>  
+    </checkbox-group>  
+  </view>
+  <block wx:if="{{ agreeAndContinue }}">
+    <view class="modal bottom-modal show">
+      <view class="dialog" >
+        <view class="bar bg-white">
+          <view class="action"></view>
+          <view class="action">服务协议和隐私政策</view>
+          <view class="action" style="font-size:30rpx;" bind:tap="close">
+            <image src="../../../images/my/regway/关闭.png" style="width: 30rpx;height: 30rpx;" mode=""/>
+          </view>
+        </view>
+        <view class="grid col-3 padding-sm" style="margin-bottom:120rpx;">
+          <view style="width: 750rpx;height: 100rpx;margin: 40rpx;">
+            <text class="text-black">请阅读并同意</text>
+            <text style="color:#3347FF" bindtap="userAgreement">《用户协议》</text>
+            <text class="text-black">和</text>
+            <text style="color:#3347FF" bindtap="userAgreement">《隐私协议》</text>
+          </view>  
+          <button class="green_goon"  type="primary" bind:tap="ExeOneClickLogin">
+            同意并继续
+          </button>     
+        </view>
+        
+      </view>
+    </view>
+  </block>
+</view>

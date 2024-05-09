@@ -1,0 +1,8 @@
+{
+  "usingComponents": {},
+  "backgroundTextStyle": "dark",
+  "navigationBarBackgroundColor": "#f2f4f9",
+  "navigationBarTitleText": "",
+  "navigationBarTextStyle": "black",
+  "homeButton":false
+}

@@ -1,0 +1,65 @@
+<template name="baseListTpl">
+	<!--横向拖动 Begin-->
+	<scroll-view scroll-x="{{true}}" wx:if="{{listMode=='scroll'}}" class="comm-list-scroll">
+		<view class="item-scroll" wx:for="{{dataList}}" wx:key="key" bindtap="url" data-url="../../{{item.type}}/detail/{{item.type}}_detail?id={{item.id}}">
+			<image lazy-load="{{true}}" class="loading" src="{{item.pic}}" mode="aspectFill"></image>
+			<view class="title text-cut">{{item.title}}</view>
+		</view>
+	</scroll-view>
+	<!--横向拖动 END-->
+
+	<view wx:else class="text-pic-list-box sub-margin-bottom {{listMode=='flow'?'comm-list-flow':'comm-list-box'}}">
+		<block wx:for="{{dataList}}" wx:key="key" bind:tap="url" data-url="/projects/workphoto/pages/meet/my_join_detail/meet_my_join_detail?id={{item.JOIN_ID}}">
+      <wxs module="m1">
+        function format(ts) {
+          var d = getDate(ts)
+          return [d.getFullYear(), d.getMonth()+1, d.getDate()].join('-')
+            + ' '
+            + [d.getHours(), d.getMinutes(), d.getSeconds()].join(':')
+        }
+        module.exports.format = format
+      </wxs>
+      <view style="text-align: center;font-size: 26rpx;line-height: 80rpx;color: rgba(150, 151, 153, 1);">{{m1.format(item.NEWS_ADD_TIME)}}</view>
+      <view class="item card-project shadow-project">
+        <view style="display: flex;justify-content: space-between;">
+          <view class="status bg-grey light" wx:if="{{item.JOIN_MEET_STATUS==0}}">已取消</view>
+          <view class="status bg-blue light" wx:if="{{item.JOIN_MEET_STATUS==2&&item.JOIN_IS_CHECKIN==0&&user.MEET_CATE_ID===1}}">待确认</view>
+          <view class="status bg-blue light" wx:elif="{{item.JOIN_MEET_STATUS==2&&item.JOIN_IS_CHECKIN==0&&user.MEET_CATE_ID===2}}">待通过</view>
+          <view class="status bg-green light" wx:elif="{{item.JOIN_MEET_STATUS==1&&item.JOIN_IS_CHECKIN==0&&user.MEET_CATE_ID===1}}">待演出</view>
+          <view class="status bg-green light" wx:elif="{{item.JOIN_MEET_STATUS==1&&item.JOIN_IS_CHECKIN==0&&user.MEET_CATE_ID===2}}">待合作</view>
+          <view bindtap="url" data-url="/projects/workphoto/pages/meet/my_join_detail/meet_my_join_detail?id={{item.JOIN_ID}}" style="font-size: 24rpx;line-height:44rpx"><view wx:if="{{(user.MEET_CATE_ID===1&&item.JOIN_MEET_LOOK===0)||(user.MEET_CATE_ID===2&&item.JOIN_USER_LOOK===0)}}" style="width: 15rpx;height: 15rpx;background-color: red;border-radius: 15rpx;"></view>查看详情 ></view>
+        </view>
+
+        <view style="display: flex;">
+          <view style="flex: 1;"> 
+            
+            <view class="title" style="height: 90rpx;display: flex;align-items: center;">
+            <image style="width: 50rpx;height: 50rpx;border-radius: 50rpx;margin-right: 20rpx;" src="{{user.MEET_CATE_ID===1?item.JOIN_USER_AVATAR:item.JOIN_MEET_AVATAR}}" mode=""/>
+            {{user.MEET_CATE_ID===1?item.JOIN_USER_NAME:item.JOIN_MEET_NAME}}</view>
+
+            <view class="author">时间：{{m1.format(item.NEWS_ADD_TIME)}}
+            </view>
+            <view class="author content-cut-two">地址：{{item.JOIN_MEET_ADDRESS}}</view>
+          </view>
+          <view style="width: 250rpx;margin-top: 120rpx;text-align: right;">
+            <view class="status bg-green light" style="background-color: #fff!important;" wx:if="{{item.JOIN_MEET_STATUS==1&&item.JOIN_IS_CHECKIN==0&&user.MEET_CATE_ID===1}}">预约成功</view>
+            <view class="status bg-green light" style="background-color: #fff!important;" wx:if="{{item.JOIN_MEET_STATUS==1&&item.JOIN_IS_CHECKIN==0&&user.MEET_CATE_ID===2}}">预约成功</view>
+            <view class="status bg-orange light" style="background-color: #fff!important;" wx:elif="{{item.JOIN_MEET_STATUS==0}}">预约失败</view>
+          </view>
+        </view>
+
+
+        <view class="data">
+
+          <block wx:if="{{item.JOIN_STATUS==99}}">
+            <text class="text-red"><text class="icon-bad margin-right-xxs"></text>系统取消<text class="text-grey" wx:if="{{item.JOIN_REASON}}">：{{item.JOIN_REASON}}</text></text>
+          </block>
+
+        </view>
+
+        </view>
+
+		</block>
+
+	</view>
+</template>

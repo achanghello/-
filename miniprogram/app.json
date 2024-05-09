@@ -1,0 +1,68 @@
+{
+	"pages": [
+		"projects/workphoto/pages/default/index/default_index",
+		"projects/workphoto/pages/about/index/about_index",
+		"projects/workphoto/pages/search/search",
+		"projects/workphoto/pages/my/index/my_index",
+		"projects/workphoto/pages/my/reg/my_reg",
+		"projects/workphoto/pages/my/edit/my_edit",
+		"projects/workphoto/pages/my/foot/my_foot",
+		"projects/workphoto/pages/my/fav/my_fav",
+		"projects/workphoto/pages/news/index/news_index",
+		"projects/workphoto/pages/news/detail/news_detail",
+		"projects/workphoto/pages/meet/index/meet_index",
+		"projects/workphoto/pages/meet/calendar/meet_calendar",
+		"projects/workphoto/pages/meet/join/meet_join",
+		"projects/workphoto/pages/meet/detail/meet_detail",
+		"projects/workphoto/pages/meet/content/meet_content",
+		"projects/workphoto/pages/meet/my_join_list/meet_my_join_list",
+		"projects/workphoto/pages/meet/my_join_detail/meet_my_join_detail",
+		"projects/workphoto/pages/admin/meet/add/admin_meet_add",
+		"projects/workphoto/pages/admin/meet/edit/admin_meet_edit",
+		"projects/workphoto/pages/work/index/home/work_home",
+		"projects/workphoto/pages/work/index/login/work_login",
+		"projects/workphoto/pages/admin/meet/temp/admin_meet_temp",
+		"projects/workphoto/pages/admin/meet/time/admin_meet_time",
+		"projects/workphoto/pages/work/meet/record/work_meet_record",
+		"projects/workphoto/pages/work/meet/join/work_meet_join",
+		"projects/workphoto/pages/work/meet/scan/work_meet_scan",
+		"cmpts/public/form/form_set/field/form_set_field",
+		"cmpts/public/form/form_show/content/form_show_content",
+		"pages/test1/test1",
+		"projects/workphoto/pages/my/identify/identify",
+		"projects/workphoto/pages/my/regway/index",
+		"projects/workphoto/pages/my/setting/index",
+		"projects/workphoto/pages/my/black/my_black",
+		"projects/workphoto/pages/my/changephone/changephone",
+		"projects/workphoto/pages/my/signout/signout",
+		"projects/workphoto/pages/about/customerservice/customerservice"
+	],
+	"window": {
+		"backgroundColor": "#f1f1f1",
+		"backgroundTextStyle": "dark",
+		"navigationBarBackgroundColor": "#000000",
+		"navigationBarTitleText": "摄影师预约小程序",
+		"navigationBarTextStyle": "white"
+	},
+	"usingComponents": {
+		"cmpt-comm-list": "/cmpts/public/list/comm_list_cmpt",
+		"cmpt-picker": "/cmpts/public/picker/picker_cmpt",
+		"cmpt-modal": "/cmpts/public/modal/modal_cmpt"
+	},
+	"sitemapLocation": "sitemap.json",
+	"lazyCodeLoading": "requiredComponents",
+	"plugins": {
+		"citySelector": {
+			"version": "1.0.2",
+			"provider": "wx63ffb7b7894e99ae"
+		}
+	},
+	"permission": {
+		"scope.userFuzzyLocation": {
+			"desc": "你的位置信息将用于小程序定位"
+		}
+	},
+	"requiredPrivateInfos": [
+		"getFuzzyLocation"
+	]
+}

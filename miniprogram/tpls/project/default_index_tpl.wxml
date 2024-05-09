@@ -1,0 +1,27 @@
+<template name="main-search">
+  <view class="top_bar bar search fixed flex-direction" style="background-color: #EFEFEF;">
+    <view style="width: 750rpx;height: 175rpx;padding-top: 110rpx;padding-left: 25rpx;">
+      <image src="../../../images/home/logo.png" style="width: 200rpx;height: 40rpx;" mode=""/>
+    </view>
+    <view class="bar search" style="width:100%">
+      <view class="city" style="margin-right: 20rpx;" bind:tap="chooseCity">
+        {{city}}
+      </view>
+      <view class="search-form round bg-white" bindtap="url" data-url="/projects/workphoto/pages/search/search?source=user&type=meet-list&returnUrl=/projects/workphoto/pages/meet/index/meet_index">
+        <image style="width: 35rpx;height: 35rpx;margin: 0 15rpx;" src="../../../images/home/搜索.png" mode=""/>
+        <input type="text" maxlength="30" value="{{search}}" placeholder="搜索你想要的内容"></input>
+      </view>
+    </view>
+    <!-- search form END-->
+  </view>
+</template>
+
+<template name="swiper">
+  <swiper indicator-dots="true" indicator-type="worm" style="margin-top: 130rpx;">
+      <block wx:for="{{ bannerlist }}" wx:key="*this">
+        <swiper-item  style="display: flex;justify-content: center;">
+          <image src="cloud://achang-1ghps5r5e2739b74.6163-achang-1ghps5r5e2739b74-1314031900/workphoto/images/banner.png" style="width: 700rpx;height: 100%;" mode="aspectFit|aspectFill|widthFix"/>
+        </swiper-item>
+      </block>
+    </swiper>
+</template>

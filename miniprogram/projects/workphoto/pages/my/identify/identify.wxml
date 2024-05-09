@@ -1,0 +1,18 @@
+<view class="chooseidentify">
+  <view class="head">
+    <view class="identify">你的身份是？</view>
+    <view class="discrib">身份选择后不可更改,请慎重选择</view>
+  </view>
+  <view class="body">
+    <view wx:for="{{ chooseitems }}" class="item {{ choose===index?'choose':'' }}" bind:tap="chooseClick" data-number="{{index}}">
+      <image src="{{ item.pic }}" mode=""/>
+      <view class="context">
+        <view class="chinese">{{ item.chinese }}</view>
+        <view class="english">{{ item.english }}</view>
+      </view>
+    </view>
+  </view>
+  <view class="foot">
+    <button disabled="{{ choose===2 }}" bind:tap="chooseComplete">选好了</button>
+  </view>
+</view>
